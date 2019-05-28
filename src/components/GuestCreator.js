@@ -28,10 +28,10 @@ class GuestCreator extends React.Component {
   }
 
   _enterPress = ({ key }) => {
-    const { addGuest } = this.props
+    const { createGuest } = this.props
     if (key === 'Enter') {
       this.setState({ text: '' })
-      addGuest(this.state.text)
+      createGuest(this.state.text)
     }
   }
 }

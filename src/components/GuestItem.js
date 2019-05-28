@@ -43,9 +43,9 @@ class GuestItem extends React.PureComponent {
   }
 
   _pairClick = () => {
-    const { pairChange } = this.props
+    const { changePair } = this.props
     const { id } = this.props
-    pairChange(id)
+    changePair(id)
   }
 
   _deleteClick = () => {
@@ -59,17 +59,17 @@ class GuestItem extends React.PureComponent {
   }
 
   _enterPress = ({ key }) => {
-    const { changeName } = this.props
+    const { editGuest } = this.props
     if (key === 'Enter') {
       this.setState({ isEdit: false })
-      changeName(this.props.id, this.state.text)
+      editGuest(this.props.id, this.state.text)
     }
   }
 
   _formBlur = () => {
-    const { changeName } = this.props
+    const { editGuest } = this.props
     this.setState({ isEdit: false })
-    changeName(this.props.id, this.state.text)
+    editGuest(this.props.id, this.state.text)
   }
 }
 

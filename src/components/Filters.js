@@ -1,23 +1,23 @@
 import React from 'react'
 
-const Filters = ({ setFilter }) => (
+const Filters = ({ setVisibilityFilter }) => (
   <div>
     <input
       type="button"
       value="All"
-      onClick={({ target: { value } }) => setFilter(value)}
+      onClick={() => setVisibilityFilter('ALL')}
     />
 
     <input
       type="button"
       value="With pairs"
-      onClick={({ target: { value } }) => setFilter(value)}
+      onClick={() => setVisibilityFilter('WITH_PAIRS')}
     />
 
     <input
       type="button"
       value="Without pairs"
-      onClick={({ target: { value } }) => setFilter(value)}
+      onClick={() => setVisibilityFilter('WITHOUT_PAIRS')}
     />
   </div>
 )
