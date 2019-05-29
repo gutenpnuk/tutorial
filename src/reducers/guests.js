@@ -18,15 +18,14 @@ const guests = (state = [], { type, payload }) => {
       return state.filter(guest => guest.id !== payload)
 
     case CHANGE_PAIR:
-      return state.map(guest => {
-        if (guest.id === payload) {
-          return {
-            ...guest,
-            pair: !guest.pair,
-          }
-        }
-        return guest
-      })
+      return state.map(guest =>
+        guest.id === payload
+          ? {
+              ...guest,
+              pair: !guest.pair,
+            }
+          : guest,
+      )
 
     case EDIT_GUEST:
       const { id, text } = payload

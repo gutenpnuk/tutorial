@@ -1,4 +1,14 @@
 import React from 'react'
+import styled from 'styled-components'
+
+const MainAdder = styled.div`
+  margin: 10px;
+  border: 1px solid black
+`
+
+const NameForm = styled.input`
+  width: 200px
+`
 
 class GuestCreator extends React.Component {
   constructor() {
@@ -12,14 +22,17 @@ class GuestCreator extends React.Component {
   render() {
     const { text } = this.state
     return (
-      <div>
-        <input
-          type="text"
-          value={text}
-          onChange={this._typingName}
-          onKeyPress={this._enterPress}
-        />
-      </div>
+      <MainAdder>
+        <div>
+          <NameForm
+            type="text"
+            placeholder="Enter guest name..."
+            value={text}
+            onChange={this._typingName}
+            onKeyPress={this._enterPress}
+          />
+        </div>
+      </MainAdder>
     )
   }
 

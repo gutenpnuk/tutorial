@@ -1,9 +1,15 @@
 import React from 'react'
+import styled from 'styled-components'
+
+
+const StyledCounter = styled.p`
+  margin: 20px
+`
 
 const Counter = ({ count }) => {
   return (
     <div>
-      <p>Total guests: {count}</p>
+      <StyledCounter>Total guests: {count}</StyledCounter>
     </div>
   )
 }

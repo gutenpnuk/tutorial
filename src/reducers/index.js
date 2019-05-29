@@ -1,1 +1,1 @@
-export { default as rootReducer } from './root'
+export { default } from './root'

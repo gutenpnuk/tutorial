@@ -1,4 +1,45 @@
 import React from 'react'
+import styled from 'styled-components'
+
+const MainItem = styled.div`
+  display: -webkit-flex;
+  -webkit-flex-direction: row;
+  -webkit-flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+  border-bottom: 1px solid black;
+  margin: 0 10px 0;
+  transition-duration: 0.4s;
+
+  :hover {
+    background-color: mediumspringgreen
+  }
+`
+
+const NamePlaceholder = styled.div`
+  -webkit-flex-grow: 1;
+  margin: 5px;
+`
+
+const NameEditor = styled.input`
+  -webkit-flex-grow: 1;
+  margin: 5px;
+`
+
+const PairChecker = styled.input`
+  -webkit-flex-grow: 0,9;
+  margin: 5px;
+`
+
+const DeleteButton = styled.input`
+  margin: 5px;
+  border-radius: 20px;
+  transition-duration: 0.4s;
+  :hover {
+    background-color: crimson
+  }
+`
 
 class GuestItem extends React.PureComponent {
   constructor(props) {
@@ -17,9 +58,9 @@ class GuestItem extends React.PureComponent {
     const { isEdit, text } = this.state
 
     return (
-      <div>
+      <MainItem>
         {isEdit ? (
-          <input
+          <NameEditor
             type="text"
             onChange={this._typingName}
             onKeyPress={this._enterPress}
@@ -28,13 +69,17 @@ class GuestItem extends React.PureComponent {
             autoFocus
           />
         ) : (
-          <p onDoubleClick={this._nameClick}>{name}</p>
+          <NamePlaceholder onDoubleClick={this._nameClick}>
+            {name}
+          </NamePlaceholder>
         )}
 
-        <input type="checkbox" checked={pair} onChange={this._pairClick} />
+        <p>Pair:</p>
 
-        <input type="button" value="delete" onClick={this._deleteClick} />
-      </div>
+        <PairChecker type="checkbox" checked={pair} onChange={this._pairClick} />
+
+        <DeleteButton type="button" value="X" onClick={this._deleteClick} />
+      </MainItem>
     )
   }
 

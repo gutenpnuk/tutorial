@@ -11,7 +11,7 @@ export const createGuest = guest => {
   setGuests(nextGuests)
 }
 
-export const changeGuestPair = id => {
+export const changePair = id => {
   const prevGuest = getGuests()
   const updatedPairs = prevGuest.map(guest => {
     if (guest.id === id) {
@@ -27,23 +27,26 @@ export const changeGuestPair = id => {
 
 export const deleteGuest = id => {
   const prevGuest = getGuests()
-  const deletedGuest = prevGuest.filter(item => {
-    return item.id !== id
+  const deletedGuest = prevGuest.filter(guest => {
+    return guest.id !== id
   })
 
   setGuests(deletedGuest)
 }
 
-export const renameGuest = (id, name) => {
-  if (name === '') {
+export const editGuest = ({id, text}) => {
+  if (!text) {
     return deleteGuest(id)
   }
   const prevGuest = getGuests()
-  const updatedName = prevGuest.map(item => {
-    if (item.id === id) {
-      item.name = name
+  const updatedName = prevGuest.map(guest => {
+    if (guest.id === id) {
+      return {
+        ...guest,
+        name: text,
+      }
     }
-    return item
+    return guest
   })
   setGuests(updatedName)
 }
