@@ -4,8 +4,8 @@ import { setVisibilityFilter } from '../actions'
 
 const mapDispatchToProps = dispatch => {
   return {
-    setVisibilityFilter: filter => {
-      dispatch(setVisibilityFilter(filter))
+    setVisibilityFilter: payload => {
+      dispatch(setVisibilityFilter(payload))
     },
   }
 }

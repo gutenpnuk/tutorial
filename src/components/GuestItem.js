@@ -59,17 +59,19 @@ class GuestItem extends React.PureComponent {
   }
 
   _enterPress = ({ key }) => {
-    const { editGuest } = this.props
+    const { editGuest, id } = this.props
+    const { text } = this.state
     if (key === 'Enter') {
       this.setState({ isEdit: false })
-      editGuest(this.props.id, this.state.text)
+      editGuest({ id, text })
     }
   }
 
   _formBlur = () => {
-    const { editGuest } = this.props
+    const { editGuest, id } = this.props
+    const { text } = this.state
     this.setState({ isEdit: false })
-    editGuest(this.props.id, this.state.text)
+    editGuest({ id, text })
   }
 }
 

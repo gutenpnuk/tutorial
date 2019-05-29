@@ -1,4 +1,5 @@
-import { visibilityFilters, SET_VISIBILITY_FILTER } from '../actions'
+import { SET_VISIBILITY_FILTER } from '../actions'
+import {visibilityFilters} from '../constants'
 
 const { ALL } = visibilityFilters
 

@@ -4,8 +4,8 @@ import { createGuest } from '../actions'
 
 const mapDispatchToProps = dispatch => {
   return {
-    createGuest: text => {
-      dispatch(createGuest(text))
+    createGuest: payload => {
+      dispatch(createGuest(payload))
     },
   }
 }

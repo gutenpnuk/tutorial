@@ -1,21 +1,22 @@
 import { connect } from 'react-redux'
 import { GuestList } from '../components'
 import { deleteGuest, changePair, editGuest } from '../actions'
-import { visibilityFilters } from '../actions'
+import { visibilityFilters } from '../constants'
+
+const {ALL, WITH_PAIRS, WITHOUT_PAIRS} = visibilityFilters
 
 const getVisibleGuests = (guests, filter) => {
   switch (filter) {
-    case visibilityFilters.ALL:
+    case ALL:
       return guests
-    case visibilityFilters.WITH_PAIRS:
+    case WITH_PAIRS:
       return guests.filter(guest => guest.pair)
-    case visibilityFilters.WITHOUT_PAIRS:
+    case WITHOUT_PAIRS:
       return guests.filter(guest => !guest.pair)
     default:
       return guests
   }
 }
-
 
 const mapStateToProps = state => {
   return {
@@ -25,14 +26,14 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    deleteGuest: id => {
-      dispatch(deleteGuest(id))
+    deleteGuest: payload => {
+      dispatch(deleteGuest(payload))
     },
-    changePair: id => {
-      dispatch(changePair(id))
+    changePair: payload => {
+      dispatch(changePair(payload))
     },
-    editGuest: (id, text) => {
-      dispatch(editGuest({id, text}))
+    editGuest: payload => {
+      dispatch(editGuest(payload))
     },
   }
 }

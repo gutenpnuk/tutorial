@@ -20,7 +20,10 @@ const guests = (state = [], { type, payload }) => {
     case CHANGE_PAIR:
       return state.map(guest => {
         if (guest.id === payload) {
-          guest.pair = !guest.pair
+          return {
+            ...guest,
+            pair: !guest.pair,
+          }
         }
         return guest
       })
