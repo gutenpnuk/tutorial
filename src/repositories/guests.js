@@ -1,18 +1,18 @@
-export const getGuests = () =>
+export const getGuestsLS = () =>
   JSON.parse(localStorage.getItem('guests') || '[]')
 
-export const setGuests = guestsList => {
+export const setGuestsLS = guestsList => {
   localStorage.guests = JSON.stringify(guestsList)
 }
 
-export const createGuest = guest => {
-  const prevGuests = getGuests()
+export const createGuestLS = guest => {
+  const prevGuests = getGuestsLS()
   const nextGuests = [...prevGuests, guest]
-  setGuests(nextGuests)
+  setGuestsLS(nextGuests)
 }
 
-export const changePair = id => {
-  const prevGuest = getGuests()
+export const changePairLS = id => {
+  const prevGuest = getGuestsLS()
   const updatedPairs = prevGuest.map(guest => {
     if (guest.id === id) {
       return {
@@ -22,23 +22,23 @@ export const changePair = id => {
     }
     return guest
   })
-  setGuests(updatedPairs)
+  setGuestsLS(updatedPairs)
 }
 
-export const deleteGuest = id => {
-  const prevGuest = getGuests()
+export const deleteGuestLS = id => {
+  const prevGuest = getGuestsLS()
   const deletedGuest = prevGuest.filter(guest => {
     return guest.id !== id
   })
 
-  setGuests(deletedGuest)
+  setGuestsLS(deletedGuest)
 }
 
-export const editGuest = ({id, text}) => {
+export const editGuestLS = ({ id, text }) => {
   if (!text) {
-    return deleteGuest(id)
+    return deleteGuestLS(id)
   }
-  const prevGuest = getGuests()
+  const prevGuest = getGuestsLS()
   const updatedName = prevGuest.map(guest => {
     if (guest.id === id) {
       return {
@@ -48,5 +48,5 @@ export const editGuest = ({id, text}) => {
     }
     return guest
   })
-  setGuests(updatedName)
+  setGuestsLS(updatedName)
 }

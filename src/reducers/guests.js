@@ -1,10 +1,10 @@
+import { handleActions } from 'redux-actions'
+import { createGuest, deleteGuest, editGuest, changePair } from '../actions'
 import uuid from 'uuid'
 
-import { CREATE_GUEST, DELETE_GUEST, CHANGE_PAIR, EDIT_GUEST } from '../actions'
-
-const guests = (state = [], { type, payload }) => {
-  switch (type) {
-    case CREATE_GUEST:
+const guests = handleActions(
+  {
+    [createGuest]: (state, { payload }) => {
       return [
         ...state,
         {
@@ -13,11 +13,11 @@ const guests = (state = [], { type, payload }) => {
           pair: false,
         },
       ]
-
-    case DELETE_GUEST:
+    },
+    [deleteGuest]: (state, { payload }) => {
       return state.filter(guest => guest.id !== payload)
-
-    case CHANGE_PAIR:
+    },
+    [changePair]: (state, { payload }) => {
       return state.map(guest =>
         guest.id === payload
           ? {
@@ -26,8 +26,8 @@ const guests = (state = [], { type, payload }) => {
             }
           : guest,
       )
-
-    case EDIT_GUEST:
+    },
+    [editGuest]: (state, { payload }) => {
       const { id, text } = payload
       if (!text) {
         return state.filter(guest => guest.id !== id)
@@ -41,10 +41,9 @@ const guests = (state = [], { type, payload }) => {
         }
         return guest
       })
-
-    default:
-      return state
-  }
-}
+    },
+  },
+  { guests: [] },
+)
 
 export default guests
